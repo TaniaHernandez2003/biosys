@@ -1,5 +1,4 @@
 import flet as ft
-import modelo as  md
 import principal as pr
 
 def mostrar_registro(e: ft.ControlEvent):
