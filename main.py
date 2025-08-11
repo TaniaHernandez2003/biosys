@@ -2,12 +2,18 @@ import flet as ft
 import principal as pr
 from airtable import usuario as Usuario
 from pyairtable.formulas import match
+import alta_usuario as al
+
 
 Usuario.api_key = "patn1DWLGpKowibsv.39bdd2ccad950be7954beb56934cc11958fe8d38c9972501c9d53818cf43b8d0"
 Usuario.base_id = "appG4jztxTtg7fnf3"
 Usuario.table_name = "usuario"
 
 def main(page: ft.Page):
+
+    def mostrar_registro(e: ft.ControlEvent):
+        page.clean()
+        al.main(page)
 
     def ingresar(e: ft.ControlEvent):
         usuario_valor = txt_usuario.value.strip()
@@ -50,17 +56,27 @@ def main(page: ft.Page):
     txt_pass = ft.TextField(label="Contraseña", password=True, can_reveal_password=True, width=300)
     espacio2 = ft.Container(height=10)
 
+    btn_registro = ft.FilledButton(
+        text="Registro",
+        bgcolor="green",
+        icon="person_add",
+        width=250,
+        height=35,
+        on_click=mostrar_registro
+    )
+
     btn_login = ft.FilledButton(
         text="Iniciar sesión",
         icon="login",
         width=250,
+        height= 35,
         color="white",
         bgcolor="green",
         on_click=ingresar
     )
 
     # Agregar controles
-    page.add(logo, txt_bienvenido, txt_usuario, espacio1, txt_pass, espacio2, btn_login)
+    page.add(logo, txt_bienvenido, txt_usuario, espacio1, txt_pass, espacio2, btn_login, btn_registro)
     page.update()
 
 if __name__ == "__main__":

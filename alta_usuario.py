@@ -38,7 +38,11 @@ def main(page: ft.Page):
 
     def regresar(e: ft.ControlEvent):
         page.clean()
-        pr.main(page)  # Regresa al menú principal
+        mn.main(page)  # Regresa al menú principal
+
+    def principal(e: ft.ControlEvent):
+        page.clean()
+        pr.main(page)
 
     def iniciar_sesion(e: ft.ControlEvent):
         page.clean()
@@ -68,6 +72,12 @@ def main(page: ft.Page):
         on_click=guardar_usuario,
         bgcolor="green"
     )
+    btn_principal = ft.FilledButton(
+        text="Regresar",
+        icon= "ARROW_BACK",
+        bgcolor= "green",
+        on_click=principal
+    )
     btn_cancelar = ft.FilledButton(
         text="Cancelar",
         icon="cancel",
@@ -82,7 +92,7 @@ def main(page: ft.Page):
     )
 
     fila_botones = ft.Row(
-        controls=[btn_guardar, btn_cancelar, btn_iniciar_sesion],
+        controls=[btn_principal, btn_guardar, btn_cancelar, btn_iniciar_sesion],
         alignment=ft.MainAxisAlignment.SPACE_EVENLY
     )
 
