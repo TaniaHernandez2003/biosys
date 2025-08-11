@@ -39,7 +39,7 @@ def main(page: ft.Page):
         page.clean()
         pr.main(page)  # vuelve a la página principal
 
-    btn_regresar = ft.ElevatedButton("Regresar",icon= "ARROW_BACK", bgcolor= "green", on_click=regresar_al_menu)
+    btn_regresar = ft.ElevatedButton("Regresar",color= "White", icon= "ARROW_BACK", bgcolor= "green", on_click=regresar_al_menu)
 
     page.clean()
     page.add(btn_regresar, tbl_usuarios)
